@@ -1,0 +1,10 @@
+.message{
+  text-align: center;
+  color: blue;
+  font-size: large;
+}
+.img{
+  height: 200px;
+  border-radius: 5px;
+  flex-direction: column;
+}
