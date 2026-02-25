@@ -5,8 +5,12 @@ import Chai from "./chai";
 //   )
 // }
 function App() {
+   const username = "admin"
    return (
+   <>
    <Chai />
+   <h1>Usr Name is :{username}</h1>
+   </>
    )
 }
 

@@ -1,4 +1,5 @@
 function customRender(reactElement, container) {
+    /*
     const domElement = document.createElement(reactElement.type)
 
     domElement.innerHTML = reactElement.children
@@ -7,6 +8,15 @@ function customRender(reactElement, container) {
     domElement.setAttribute('target', reactElement.props.target)
 
     container.appendChild(domElement)
+    */
+
+    const domElment = document.createElement(reactElement.type)
+    domElment.innerHTMl = reactElement.children
+    for(const props in reactElement.props){
+        if(prop == 'children') continue;
+        domElment.setAttribute(props,reactElement.props[prop])
+    }
+    container.appendChild(domElment)
 }
 
 const reactElement = {
