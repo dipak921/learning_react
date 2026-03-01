@@ -5,15 +5,15 @@ function App() {
 
   return (
     <div
-      className="w-screen h-screen duration-200"
+      className='w-screen h-screen duration-200'
       style={{ backgroundColor: color }}
     >
-      <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2">
-        <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
+      <div className='fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2'>
+        <div className='flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl'>
 
           <button
             onClick={() => setColor("red")}
-            className="px-4 py-1 rounded-full text-white shadow-lg"
+            className='px-4 py-1 rounded-full text-white shadow-lg'
             style={{ backgroundColor: "red" }}
           >
             Red
@@ -21,7 +21,7 @@ function App() {
 
           <button
             onClick={() => setColor("green")}
-            className="px-4 py-1 rounded-full text-white shadow-lg"
+            className='px-4 py-1 rounded-full text-white shadow-lg'
             style={{ backgroundColor: "green" }}
           >
             Green
@@ -29,7 +29,7 @@ function App() {
 
           <button
             onClick={() => setColor("blue")}
-            className="px-4 py-1 rounded-full text-white shadow-lg"
+            className='px-4 py-1 rounded-full text-white shadow-lg'
             style={{ backgroundColor: "blue" }}
           >
             Blue
@@ -37,7 +37,7 @@ function App() {
 
            <button
             onClick={() => setColor("yellow")}
-            className="px-4 py-1 rounded-full text-white shadow-lg"
+            className='px-4 py-1 rounded-full text-white shadow-lg'
             style={{ backgroundColor: "yellow" }}
           >
             Yellow
@@ -45,7 +45,7 @@ function App() {
 
            <button
             onClick={() => setColor("pink")}
-            className="px-4 py-1 rounded-full text-white shadow-lg gap-2"
+            className='px-4 py-1 rounded-full text-white shadow-lg gap-2'
             style={{ backgroundColor: "pink" }}
           >
             Pink
