@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect,useRef } from 'react'
 
 function App() {
   const [length, setLength] = useState(8)
@@ -9,6 +9,9 @@ function App() {
 
   const [password, setPassword] = useState("");
 
+  // useRef Hook
+  const passowrdRef = useRef(null) 
+
   const passwordGenerator = useCallback(()=> {
     let pass=""
     let str ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -16,16 +19,36 @@ function App() {
     if(numberAllowed) str +="0123456789"
     if(charAllowed) str +="!@#$%^&*()_+-={}[]|\\:;\"'<>,.?/~`"
 
-    for(let i =1; i<=array.length; i++){
-      let char = Math.Floor(Math.random() * str.length +1)
-      pass = str.charAt(char)
+    for(let i =1;  i <= length; i++){
+      let char = Math.floor(Math.random() * str.length +1)
+      pass += str.charAt(char)
     }
     setPassword(pass)
 
   },[length,numberAllowed,charAllowed,setPassword])
 
+  // first way to copy
+  // const copyPasswordToClipbord = useCallback(() =>{
+  //   window.navigator.clipboard.writeText(password)
+  // },[password] )
+
+  /*
+  // Second way to copy
+  const copyPasswordToClipbord = useCallback(() =>{
+   passowrdRef.current?.select()
+   window.navigator.clipboard.writeText(password)
+  },[password] )
+*/
+  const copyPasswordToClipbord = useCallback(() =>{
+   passowrdRef.current?.select()
+   passowrdRef.current?.setSelectionRang(0,5)
+   window.navigator.clipboard.writeText(password)
+  },[password] )
 
 
+
+
+  useEffect(() => {passwordGenerator()}, [length,numberAllowed,charAllowed, passwordGenerator])
   
 
   return (
@@ -39,9 +62,12 @@ function App() {
     className='outline-none w-full py-1 px-3'
     placeholder='password'
     readOnly
+    ref={passowrdRef}
     />
   
-    <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+    <button 
+    onClick={copyPasswordToClipbord}
+    className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
     >Copy</button>
 
 </div>
@@ -74,7 +100,7 @@ function App() {
         deaultChecked={charAllowed}
         id="characterInput"
         onChange={() => {
-          setNumberAllowed((prev) =>
+          setCharAllowed((prev) =>
           !prev);
         }}
         />
