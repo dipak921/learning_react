@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { getPost } from './AppAPI'
+export const getPost = async () => {
+    const response = await fetch("https://localhost:7035/api/Employees");
 
-function App() {
-
-   const getPost = async () => {
-    const response = await fetch("https://localhost:7035/api/Employees", {
-        method: 'GET',
-    });
+    if (!response.ok) {
+        throw new Error("Failed to fetch data");
+    }
 
     return response.json();
 };
-}
-
-export default AppAPI
